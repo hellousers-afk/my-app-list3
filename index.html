@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>every app link</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+        }
+
+        .app {
+            margin: 15px 0;
+            font-size: 20px;
+        }
+
+        .app-name {
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        a {
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My App Link</h1>
+
+    <div id="appList"></div>
+
+    <script>
+
+        // 在這裡輸入 App 名稱和網址
+        let apps = [
+            ["instagram:", "https://play.google.com/store/apps/details?id=com.instagram.android&hl=zh_TW"],
+            ["facebook:", "https://play.google.com/store/apps/details?id=com.facebook.katana&hl=zh_TW"],
+            ["discord:", "https://play.google.com/store/apps/details?id=com.discord&hl=zh_TW"],
+            ["whatsapp:", "https://github.com"],
+            ["Line:", "https://play.google.com/store/apps/details?id=jp.naver.line.android&hl=zh_TW"],
+            ["Tiktok:", "https://play.google.com/store/apps/details?id=com.ss.android.ugc.trill&hl=zh_TW"],
+            ["Threads:", "https://play.google.com/store/apps/details?id=com.instagram.barcelona&hl=zh_TW"],
+          ["WePlay:", "https://play.google.com/store/apps/details?id=com.wejoy.weplay&hl=zh_TW"],
+          ["Messenger:", "https://play.google.com/store/apps/details?id=com.facebook.orca&hl=zh_TW"],
+          ["Snapchat:", "https://play.google.com/store/apps/details?id=com.snapchat.android&hl=zh_TW"],
+          ["YPT:", "https://play.google.com/store/apps/details?id=com.pallo.passiontimerscoped&hl=zh_TW"],
+          ["多鄰國:", "https://play.google.com/store/apps/details?id=com.duolingo&hl=zh_TW"],
+          ["死神單字:", "https://play.google.com/store/apps/details?id=com.grimReaperWords&hl=zh_TW"],
+          ["超級單字王:", "https://play.google.com/store/apps/details?id=com.chaos.engapp&hl=zh_TW"],
+          ["desmos:", "https://play.google.com/store/apps/details?id=com.desmos.calculator&hl=zh_TW"],
+          ["udn讀書館:", "https://play.google.com/store/apps/details?id=com.udn.dp.books.lib.android&hl=zh_TW"],
+          ["readmoo:", "https://play.google.com/store/apps/details?id=com.readmoo.mooreader.v2&hl=zh_TW"],
+          ["Kobo電子書:", "https://play.google.com/store/apps/details?id=com.kobobooks.android&hl=zh_TW"],
+          ["博客來:", "https://play.google.com/store/apps/details?id=tw.com.books.android.plus&hl=zh_TW"],
+          ["微信讀書:", "https://play.google.com/store/apps/details?id=com.tencent.weread&hl=zh_TW"],
+          ["私人健身教練:", "https://play.google.com/store/search?q=%E7%A7%81%E4%BA%BA%E5%81%A5%E8%BA%AB%E6%95%99%E7%B7%B4&c=apps&hl=zh_TW"],
+          ["全身鍛鍊:", "https://play.google.com/store/apps/details?id=fitnesscoach.workoutplanner.weightloss&hl=zh_TW"],
+          ["男士減肥:", "https://play.google.com/store/apps/details?id=menloseweight.loseweightappformen.weightlossformen&hl=zh_TW"],
+          ["長高運動:", "https://play.google.com/store/apps/details?id=increaseheightworkout.heightincreaseexercise.tallerexercise&hl=zh_TW"],
+          ["普拉提運動:", "https://play.google.com/store/apps/details?id=pilatesworkout.yogaworkout.loseweight.workoutapps&hl=zh_TW"],
+          ["健身計畫:", "https://play.google.com/store/apps/details?id=homeworkout.fitness.app&hl=zh_TW"],
+          ["智抗糖:", "https://play.google.com/store/apps/details?id=com.h2sync.android.h2syncapp&hl=zh_TW"],
+          ["時鐘:", "https://play.google.com/store/apps/details?id=com.wssc.simpleclock&hl=zh_TW"],
+          ["體重管理:", "https://play.google.com/store/apps/details?id=jp.united.app.kanahei.weightapp&hl=zh_TW"],
+          ["計步器:", "https://play.google.com/store/apps/details?id=pedometer.steptracker.calorieburner.stepcounter&hl=zh_TW"],
+          ["YouCut:", "https://play.google.com/store/apps/details?id=com.camerasideas.trimmer&hl=zh_TW"],
+          ["螢幕錄影:", "https://play.google.com/store/apps/details?id=videoeditor.videorecorder.screenrecorder&hl=zh_TW"],
+          ["Canva:", "https://play.google.com/store/apps/details?id=com.canva.editor&hl=zh_TW"],
+          ["Gamma Ai:", "https://play.google.com/store/apps/details?id=app.gamma.mobile&hl=zh_TW"],
+          ["照片編輯:", "https://play.google.com/store/apps/details?id=photo.editor.photoeditor.photoeditorpro&hl=zh_TW"],
+          ["Edits:", "https://play.google.com/store/apps/details?id=com.instagram.basel&hl=zh_TW"],
+          ["Inshot:", "https://play.google.com/store/search?q=Inshot&c=apps&hl=zh_TW"],
+          ["威力導演:", "https://play.google.com/store/apps/details?id=com.cyberlink.powerdirector.DRA140225_01&hl=zh_TW"],
+          ["YouTube Create:", "https://play.google.com/store/apps/details?id=com.google.android.apps.youtube.producer&hl=zh_TW"],
+          ["小影:", "https://play.google.com/store/apps/details?id=com.quvideo.xiaoying&hl=zh_TW"],
+          ["Tor browser:", "https://play.google.com/store/apps/details?id=org.torproject.torbrowser&hl=zh_TW"],
+          ["FireFox:", "https://play.google.com/store/apps/details?id=org.mozilla.firefox&hl=zh_TW"],
+          ["Chrome:", "https://play.google.com/store/apps/details?id=com.android.chrome&hl=zh_TW"],
+          ["DuckDuckGo:", "https://play.google.com/store/apps/details?id=com.duckduckgo.mobile.android&hl=zh_TW"],
+          ["Bing:", "https://play.google.com/store/apps/details?id=com.microsoft.bing&hl=zh_TW"],
+          ["Brave:", "https://play.google.com/store/apps/details?id=com.brave.browser&hl=zh_TW"],
+          ["Opera:", "https://play.google.com/store/apps/details?id=com.opera.browser&hl=zh_TW"],
+          ["safari:apple內建", "https://play.google.com"],
+          ["Vivald browser:", "https://play.google.com/store/apps/details?id=com.vivaldi.browser&hl=zh_TW"],
+          ["Microsoft edge:", "https://play.google.com/store/apps/details?id=com.vivaldi.browser&hl=zh_TW"],
+          ];
+
+
+        let appList = document.getElementById("appList");
+
+        for (let i = 0; i < apps.length; i++) {
+
+            let name = apps[i][0];
+            let url = apps[i][1];
+
+            appList.innerHTML += `
+                <div class="app">
+
+                    <span class="app-name">
+                        ${name}
+                    </span>
+
+                    <a href="${url}" target="_blank">
+                        ${url}
+                    </a>
+
+                </div>
+            `;
+        }
+
+    </script>
+
+</body>
+
+</html>
